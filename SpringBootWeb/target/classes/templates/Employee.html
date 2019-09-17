@@ -1,0 +1,53 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+
+    <title>List Employee</title>
+    
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	
+</head>
+
+<body>
+
+<div class="container">
+	<h1>员工名单</h1>
+	
+	<div th:if="${not #lists.isEmpty(employee)}">
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">名字</th>
+		      <th scope="col">部门</th>
+		      <th scope="col">行动</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+	
+		    <tr th:each="employees : ${employee}">		   
+		      <td th:text="${employees.name}"></td>
+		      <td th:text="${employees.department}"></td>
+		      <td>
+		      		<a th:href="${'/employee/edit/'+employees.id}"><button type="button" class="btn btn-warning">
+                                            编辑</button></a>
+	
+		      		<a th:href="${'/employee/delete/'+employees.id}"><button type="button" class="btn btn-danger">
+		      		删除</button></a>
+		      </td>
+		    </tr>
+		    	
+		  </tbody>
+		</table>
+	</div>
+	<div>
+		<a class="btn btn-primary" href="/employee/create">添加</a>
+	</div>	
+	
+</div>
+
+</body>
+</html>

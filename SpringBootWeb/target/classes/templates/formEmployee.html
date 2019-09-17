@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <title>Create Employee</title>
+    
+
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	
+</head>
+
+<body>
+
+<div class="container">
+	<h1>添加员工</h1>
+	
+		<form th:object="${employee}" th:action="@{/employee/create}" method="post">
+		<input type="hidden" class="form-control" th:field="*{id}"/>
+		<input type="hidden" class="form-control" th:field="*{version}"/>
+		  <div class="form-group">
+		    <label for="name">员工名字</label>
+		    <input type="text" class="form-control" id="name" placeholder="写名字" th:field="*{name}"/>
+		  </div>		  
+		  <div class="form-group">
+		    <label for="department">部门</label>
+		    <input type="text" class="form-control" id="department" placeholder="部门" th:field="*{department}"/>
+		  </div>
+		  <button type="submit" class="btn btn-primary">保存</button>
+		</form>		
+
+</div>
+
+
+
+</body>
+</html>
